@@ -7,7 +7,9 @@ allowed-tools: Read, Grep, Glob, Bash
 # Security Check — Security by Design
 
 Auditoria pragmática de segurança. Evita teatro: foca em ameaças reais para a stack
-do projeto (Python/Flask, Next.js/TS, GCP/Cloudflare/Supabase).
+do projeto. Os exemplos abaixo usam Python/Flask, Next.js/TS, GCP/Cloudflare/Supabase,
+mas os princípios se aplicam a qualquer stack (inclusive PHP/MySQL) — adapte o exemplo
+técnico ao que o projeto realmente usa, sem pular o item.
 
 ## Modo de operação
 
@@ -23,7 +25,7 @@ do projeto (Python/Flask, Next.js/TS, GCP/Cloudflare/Supabase).
 **Secrets management**
 - [ ] Nenhum secret hardcoded (grep por `api_key`, `password`, `secret`, `token` em código).
 - [ ] `.env` no `.gitignore` e nunca commitado (`git log --all --full-history -- .env`).
-- [ ] Secrets em runtime vêm de Secret Manager / env vars, não de arquivos no repo.
+- [ ] Secrets em runtime vêm de Secret Manager / env vars, ou — em stacks sem esse recurso (ex: PHP em hospedagem compartilhada) — de um arquivo de configuração em código (`config/config.php`) fora da pasta pública, git-ignored, nunca de `.env` exposto por engano.
 - [ ] Rotação documentada para secrets de produção.
 
 **Injeção (SQLi, XSS, Command Injection)**
@@ -54,7 +56,9 @@ do projeto (Python/Flask, Next.js/TS, GCP/Cloudflare/Supabase).
 
 **File upload / Storage**
 - [ ] Whitelist de tipos MIME (verificada no servidor, não só no cliente).
+- [ ] Tipo real do arquivo validado (magic bytes/assinatura), não só a extensão ou o MIME declarado pelo cliente.
 - [ ] Tamanho máximo enforced.
+- [ ] Nome do arquivo normalizado/sanitizado (evita path traversal e sobrescrita de arquivo crítico).
 - [ ] Arquivos servidos de domínio separado ou com `Content-Disposition: attachment`.
 - [ ] Não executa nada do que foi uploaded.
 
@@ -69,6 +73,7 @@ do projeto (Python/Flask, Next.js/TS, GCP/Cloudflare/Supabase).
 - [ ] Logs **não** contêm: tokens, senhas, PII completa, payment info.
 - [ ] Eventos de segurança logados: login fail, permission denied, password change.
 - [ ] Logs estruturados (JSON) com correlation ID.
+- [ ] Se o log de erro é gravado em banco de dados, existe contingência em arquivo para quando o banco estiver indisponível, a conexão falhar, ou o próprio erro impedir o registro normal — arquivo fora da pasta pública, protegido contra acesso direto pela web.
 
 **Infra (GCP/Cloudflare)**
 - [ ] Cloud Run/Functions com IAM mínimo (não Editor/Owner).

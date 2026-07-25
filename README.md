@@ -86,7 +86,8 @@ seu-projeto/
 │       ├── code-review-b2/SKILL.md     # 👀 Revisão padrão B2 Tech (VSA + DDD)
 │       ├── security-check/SKILL.md     # 🔐 Auditoria Security by Design (OWASP)
 │       ├── commit/SKILL.md             # ✍️  Conventional commits assistidos
-│       └── frontend-design/SKILL.md    # 🎭 Frontend distinto, sem "AI slop"
+│       ├── frontend-design/SKILL.md    # 🎭 Frontend distinto, sem "AI slop"
+│       └── web-app-checklist/SKILL.md  # 🧩 Decisões técnicas de sistema web (auth/RBAC/soft delete/logs)
 ├── .claude-plugin/
 │   └── plugin.json                     # 📦 Metadados do plugin b2tech-starter
 ├── .mcp.json                           # 🔌 MCP servers do projeto (vazio por padrão)
@@ -175,7 +176,8 @@ contexto da conversa bate com a `description`.
 | 👀 **`code-review-b2`** | *"revise o código"*, *"code review"*, fim de feature/PR | Vertical Slice + DDD, Security by Design, qualidade Python/Flask + Next.js/TS, testes. Output com `🔴 Blocker` / `🟡 Major` / `🟢 Nit` + decisão. |
 | 🔐 **`security-check`** | *"audite a segurança"*, antes de subir pra prod | OWASP Top 10, secrets, AuthN/AuthZ, supply chain, logs. Findings `🔥 CRÍTICO`→`🔵 INFO` com ameaça → impacto → fix. |
 | ✍️ **`commit`** | `/commit` (ou peça pra commitar) | Stage + mensagem em Conventional Commits a partir do diff. **Não dá push** — você decide quando. |
-| 🎭 **`frontend-design`** | *"crie um componente/página/UI"* | Frontend distinto e production-grade, fugindo da estética genérica de IA. |
+| 🎭 **`frontend-design`** | *"crie um componente/página/UI"* | Frontend distinto e production-grade, fugindo da estética genérica de IA. Inclui template pra documentar `docs/DESIGN.md` (front matter YAML + seções). |
+| 🧩 **`web-app-checklist`** | projeto com cadastro + login + perfis, durante design/planejamento | Checklist de decisões técnicas de sistema web (autenticação, RBAC, soft delete, auditoria, uploads, migrations, logs) que skills de brainstorming genéricas não cobrem. Não é gate — só complementa. |
 
 ---
 
