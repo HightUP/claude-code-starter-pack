@@ -54,4 +54,37 @@ and conventions, or delete it for greenfield work. Examples of what to capture:
 If none of the above is established yet, leave this section empty and design
 from a clean slate.
 
+### Documenting a new design system as `docs/DESIGN.md`
+
+When a project needs its design system written down (extracted from an image,
+from existing HTML/CSS, or defined from scratch), save it as `docs/DESIGN.md`
+using YAML front matter for the objective values, followed by Markdown
+sections explaining how to apply them:
+
+```yaml
+---
+name: <system name>
+colors:
+  primary: '#...'
+  surface: '#...'
+  # ... full palette, semantic names not just "blue-500"
+typography:
+  headline-lg: { fontFamily: ..., fontSize: 24px, fontWeight: '700', lineHeight: 32px }
+  body-md: { fontFamily: ..., fontSize: 14px, fontWeight: '400', lineHeight: 20px }
+rounded:
+  sm: 0.125rem
+  DEFAULT: 0.25rem
+spacing:
+  base: 4px
+  sm: 8px
+  md: 16px
+---
+```
+
+Follow with prose sections: Brand & Style, Colors (usage rules per color, not
+just hex), Typography, Layout & Spacing, Elevation & Depth, Shapes, Components
+(states: error, success, alert, loading, empty). Objective values in front
+matter, rationale and application rules in prose — this keeps the doc usable
+both as a lookup table and as guidance for building new screens consistently.
+
 Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
