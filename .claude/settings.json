@@ -61,12 +61,12 @@
           "hooks": [
             {
               "type": "command",
-              "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-bash-guard.sh",
+              "command": "\"${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-bash-guard.sh\"",
               "timeout": 10
             },
             {
               "type": "command",
-              "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-commit-secrets.sh",
+              "command": "\"${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-commit-secrets.sh\"",
               "timeout": 15
             }
           ]
@@ -78,7 +78,7 @@
           "hooks": [
             {
               "type": "command",
-              "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-format.sh",
+              "command": "\"${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-format.sh\"",
               "timeout": 30
             }
           ]

@@ -82,3 +82,4 @@ Superpowers (brainstorming → writing-plans → subagent-driven-development) j�
 - Não usar `any` em TypeScript sem comentário justificando.
 - Não fazer `git push --force` em `main`.
 - Não adicionar deps sem rodar audit primeiro.
+- Não usar `${CLAUDE_PROJECT_DIR}` sem aspas em `command` de hooks no `.claude/settings.json`. Se o projeto estiver dentro de uma pasta com espaço no nome (ex: `C:\VS Code\...`), a variável expande sem aspas e o bash quebra a palavra no espaço, tentando rodar um caminho inválido. Sempre escreva `"\"${CLAUDE_PROJECT_DIR}/.claude/hooks/algo.sh\""` (aspas duplas escapadas envolvendo o valor inteiro).
